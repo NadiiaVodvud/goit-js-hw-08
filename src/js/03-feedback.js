@@ -21,6 +21,14 @@ function onFormInput(e) {
 function onFormSubmit(e) {
   e.preventDefault();
 
+  const {
+    elements: { email, message },
+  } = e.currentTarget;
+
+  if (email.value === '' || message.value === '') {
+    return alert('Please fill in all the fields!');
+  }
+
   e.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
 
@@ -31,6 +39,7 @@ function fillFormTextarea() {
   const saveMessage = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
   if (saveMessage) {
-    form.value = saveMessage;
+    form.email.value = saveMessage.email;
+    form.message.value = saveMessage.message;
   }
 }
