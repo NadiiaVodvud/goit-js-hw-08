@@ -19,7 +19,7 @@ function onFormSubmit(e) {
   e.preventDefault();
 
   const { email, message } = e.currentTarget.elements;
-  console.log(e.currentTarget.elements);
+  // console.log(e.currentTarget.elements);
 
   if (email.value === '' || message.value === '') {
     return alert('Please fill in all the fields!');
@@ -37,7 +37,7 @@ function fillFormTextarea() {
   const saveMessage = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
   if (saveMessage) {
-    form.email.value = saveMessage.email;
-    form.message.value = saveMessage.message;
+    form.email.value = saveMessage.email || '';
+    form.message.value = saveMessage.message || '';
   }
 }
